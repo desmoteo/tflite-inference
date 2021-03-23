@@ -5,7 +5,7 @@ The docker-hub image is optimized for recent CPUs implementing the AVX512 SIMD i
 ## Usage
 
 Use as base image in the development and deployment of tflite enabled services:
-```
+``` Dockerfile
 FROM tflite-inference:latest
 
 COPY ...
