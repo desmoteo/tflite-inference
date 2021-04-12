@@ -41,4 +41,7 @@ COPY --from=pillow-simd-builder /*.whl /
 
 COPY --from=tflite-builder /tensorflow/tensorflow/lite/tools/pip_package/gen/tflite_pip/python3/dist/tflite_runtime-2.5.0-cp37-cp37m-linux_x86_64.whl /
 
+RUN apt-get update && apt install -y build-essential libopenjp2-7 libwebp6 libwebpdemux2 libwebpmux3  libjpeg-turbo-progs libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxkbcommon-x11-0 zlib1g libtiff5 && apt remove -y build-essential && apt autoremove -y && rm -rf /var/lib/apt/lists/*
+
+
 RUN pip3 install --no-cache-dir --upgrade pip && pip3 install --no-cache-dir *.whl && pip3 install --no-cache-dir --upgrade numpy==1.20 && rm *.whl
